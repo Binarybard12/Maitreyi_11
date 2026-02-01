@@ -39,4 +39,31 @@ const admin = (req, res, next) => {
   }
 };
 
-export { protect, admin };
+const warden = (req, res, next) => {
+  if (req.user && (req.user.role === "warden" || req.user.isAdmin)) {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as warden");
+  }
+};
+
+const staff = (req, res, next) => {
+  if (req.user && req.user.role === "staff") {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as staff");
+  }
+};
+
+const student = (req, res, next) => {
+  if (req.user && req.user.role === "student") {
+    next();
+  } else {
+    res.status(401);
+    throw new Error("Not authorized as student");
+  }
+};
+
+export { protect, admin, warden, staff, student };

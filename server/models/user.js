@@ -16,9 +16,29 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    role: {
+      type: String,
+      required: true,
+      enum: ["student", "warden", "staff"],
+      default: "student",
+    },
+    phoneNumber: {
+      type: String,
+    },
+    roomNumber: {
+      type: String,
+    },
+    blockNumber: {
+      type: String,
+    },
+    assignedRooms: [
+      {
+        type: String,
+      },
+    ],
+    // Keeping isAdmin for backward compatibility
     isAdmin: {
       type: Boolean,
-      required: true,
       default: false,
     },
   },

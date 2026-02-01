@@ -20,7 +20,7 @@ const Header = ({ history }) => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>HostelFix</Navbar.Brand>
+            <Navbar.Brand>सेवाSYNC</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -57,6 +57,23 @@ const Header = ({ history }) => {
                     <i className="fas fa-user"></i> Sign In
                   </Nav.Link>
                 </LinkContainer>
+              )}
+              {userInfo && (
+                <NavDropdown title="Complaints" id="complaints">
+                  {userInfo.role === "warden" || userInfo.isAdmin ? (
+                    <LinkContainer to="/complaints/admin">
+                      <NavDropdown.Item>Manage Complaints</NavDropdown.Item>
+                    </LinkContainer>
+                  ) : userInfo.role === "staff" ? (
+                    <LinkContainer to="/complaints/staff">
+                      <NavDropdown.Item>Assigned Tasks</NavDropdown.Item>
+                    </LinkContainer>
+                  ) : (
+                    <LinkContainer to="/complaints">
+                      <NavDropdown.Item>My Complaints</NavDropdown.Item>
+                    </LinkContainer>
+                  )}
+                </NavDropdown>
               )}
             </Nav>
           </Navbar.Collapse>

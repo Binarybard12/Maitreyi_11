@@ -13,6 +13,9 @@ import AttendanceView from "./screens/attendanceView";
 import ProfileView from "./screens/profileView";
 import UserListView from "./screens/userListView";
 import UserEditView from "./screens/userEditView";
+import ComplaintScreen from "./screens/ComplaintScreen";
+import AdminComplaintView from "./screens/AdminComplaintView";
+import StaffComplaintView from "./screens/StaffComplaintView";
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
+          <Route path="/complaints/admin" component={AdminComplaintView} />
+          <Route path="/complaints/staff" component={StaffComplaintView} />
+          <Route path="/complaints" component={ComplaintScreen} exact />
           <Route path="/user/:userId/edit" component={UserEditView} />
           <Route path="/userList" component={UserListView} />
           <Route path="/profile" component={ProfileView} />

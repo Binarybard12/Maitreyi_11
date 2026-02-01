@@ -2,6 +2,7 @@ import express from "express";
 import userRoutes from "./routes/userRoutes.js";
 import studentRoutes from "./routes/studentRoutes.js";
 import attendanceRoutes from "./routes/attendanceRoutes.js";
+import complaintRoutes from "./routes/complaintRoutes.js";
 import path from "path";
 import morgan from "morgan";
 
@@ -20,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/users", userRoutes);
 app.use("/student", studentRoutes);
 app.use("/attendance", attendanceRoutes);
+app.use("/complaints", complaintRoutes);
+
 
 const __dirname = path.resolve();
 if (process.env.NODE_ENV === "production") {
